@@ -1,5 +1,13 @@
 {{ if .Site.Params.comment.disqus.shortname }}
-<div id="disqus_thread"></div>
+<script id="dsq-count-scr" src="//{{.Site.Params.comment.disqus.shortname}}.disqus.com/count.js" async=""></script>
+<div class="disqus-comments">
+    <div id="showcom" class="flex justify-center my-4">
+        <button id="show-comments" class="bg-tertiary-bg rounded block m-auto m-0 px-3 py-1" type="button">
+            Show <span class="disqus-comment-count" data-disqus-url="{{ trim .Permalink "/" }}">comments</span>
+        </button>
+    </div>
+    <div id="disqus_thread"></div>
+</div>
 <script>
     var disqus_config = function () {
     {{with .GetParam "disqus_identifier" }}this.page.identifier = '{{ . }}';{{end}}
@@ -11,12 +19,14 @@
             document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
             return;
         }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + {{ .Site.Params.comment.disqus.shortname }} + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
+        document.getElementById('show-comments').onclick = function () {
+            var d = document, s = d.createElement('script'); s.async = true;
+            s.src = '//' + {{ .Site.Params.comment.disqus.shortname }} + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            this.parentNode.parentNode.removeChild(document.getElementById('showcom'));
+        }
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 {{ end }}
