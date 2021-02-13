@@ -46,9 +46,11 @@ module.exports = {
         'primary-bg': 'var(--color-primary-bg)',
         'secondary-bg': 'var(--color-secondary-bg)',
         'tertiary-bg': 'var(--color-tertiary-bg)',
+        'code-bg': 'var(--color-code-bg)',
         'primary-text': 'var(--color-primary-text)',
         'secondary-text': 'var(--color-secondary-text)',
         'tertiary-text': 'var(--color-tertiary-text)',
+        'code-text': 'var(--color-code-text)',
       }
     }
   },
