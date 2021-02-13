@@ -25,5 +25,9 @@
   </div>
 </div>
 {{ else }}
+  <div class="pt-6 hover:text-eureka">
+      <a href="{{ .Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
+      <i class="fas fa-caret-right ml-1"></i>
+  </div>
 {{ partial "components/post-metadata" . }}
 {{ end }}
