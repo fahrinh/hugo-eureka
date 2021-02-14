@@ -67,7 +67,7 @@
 }
 
 .content pre code {
-  @apply block bg-transparent p-0 overflow-auto rounded-none;
+  @apply block bg-transparent p-0 overflow-auto break-normal rounded-none;
 }
 
 .content ul {
